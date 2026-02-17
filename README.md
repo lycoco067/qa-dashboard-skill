@@ -108,6 +108,59 @@ Stats 영역 간격 조정 필요
 "QA 요청 전체 확인해줘"
 ```
 
+## 🔄 상태 전환 기능
+
+QA 대시보드는 **동일한 화면을 다양한 상태로 전환**하여 확인할 수 있습니다.
+
+### 기본 상태 탭
+
+| 탭 | 설명 | 테스트 계정 |
+|---|---|---|
+| `빈 상태` | 데이터가 없는 초기 상태 | empty@test.com |
+| `데이터 있음` | 데이터가 채워진 상태 | capture@test.com |
+
+![기본 상태 탭 - 빈 상태/데이터 있음](screenshots/state-toggle-default.png)
+
+### 커스텀 상태 탭
+
+플로우별로 비즈니스 로직에 맞는 **커스텀 상태**를 정의할 수 있습니다:
+
+| 예시 | 상태 1 | 상태 2 |
+|---|---|---|
+| 환불 플로우 | `조건 미충족` | `조건 충족` |
+| 결제 플로우 | `결제 전` | `결제 완료` |
+| 학습 플로우 | `수강 전` | `수료 완료` |
+
+![커스텀 상태 탭 - 조건 미충족/조건 충족](screenshots/state-toggle-custom.png)
+
+### qa_flows.yml 상태 설정 예시
+
+```yaml
+refund:
+  name: "환불"
+  states:
+    - key: "ineligible"
+      label: "조건 미충족"
+      icon: "alert-circle"
+    - key: "eligible"
+      label: "조건 충족"
+      icon: "check"
+  screens:
+    - id: RFD1
+      title: "환불 요청"
+```
+
+## 👤 테스트 계정
+
+| 계정 | 이메일 | 비밀번호 | 용도 |
+|---|---|---|---|
+| **Capture User** | capture@test.com | password123 | 데이터가 있는 상태 테스트 |
+| **Empty User** | empty@test.com | password123 | 빈 상태 테스트 |
+
+시드 데이터: `db/seeds/test_capture_seeds.rb`
+
+---
+
 ## QA 대시보드 기능
 
 ### 1. 비교 모드 (Compare)
