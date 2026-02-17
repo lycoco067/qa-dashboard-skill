@@ -2,6 +2,25 @@
 
 QA 대시보드 관리 및 디자인 검수 워크플로우 자동화 스킬
 
+## 스크린샷
+
+### 1. 대시보드 메인 화면
+모든 QA 플로우를 카드 형태로 한눈에 확인할 수 있습니다. 각 플로우별로 화면 수, 체크리스트 항목 수, PDF 문서 링크를 제공합니다.
+
+![Dashboard Main](screenshots/01_dashboard_main.png)
+
+### 2. 비교 모드 (Compare Mode)
+좌측에 레퍼런스 디자인, 우측에 현재 구현을 나란히 비교합니다. 상단 탭으로 화면 전환, 우측 패널에 체크리스트 표시.
+
+![Compare Mode](screenshots/02_compare_mode.png)
+
+### 3. 수정 요청 작성
+하단 입력창에서 수정이 필요한 내용을 작성하면 `.claude/qa_requests/{SCREEN_ID}.md`에 자동 저장됩니다.
+
+![Request Form](screenshots/03_request_form.png)
+
+---
+
 ## Trigger Keywords
 
 | 키워드 | 예시 |
